@@ -45,7 +45,7 @@ def venta(h, c):
 
 
 def mostrarInventario(h, c):
-    primt("INVENTARIO")
+    print("INVENTARIO")
 
 
 # listaHelados
