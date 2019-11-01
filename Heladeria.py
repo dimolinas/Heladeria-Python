@@ -6,6 +6,13 @@ def mostrarMenu():
     print(
         "Seleccione una opción (1-5) o q para salir\n1.Comprar\n2.Agregar un producto\n3.Ver inventario\n4.Agregrar al inventario\n5.Total de ventas del dia\nq: Salir")
 
+def mostrarTablas(t):
+    contador = 0
+    print("N°. \t Tipo \t Precio \t Cantidad")
+    while contador < len(t):
+        print(contador +1, '\t', t[contador][0], '\t', t[contador][1], '\t', t[contador][2] )
+        contador += 1
+
 def ingresarDatos():
     while True:
         eleccion = input()
@@ -36,24 +43,24 @@ def elegirMenuPrincipal(p):
 def venta(h, c):
     print("Nueva venta\nEscoja un sabor:")
     contador = 0
-    print("N°) \t Sabor              \t Precio         \t Cantidad")
-    while contador < len(helados):
-        print(contador + 1, ")", '\t', helados[contador][0], "           ", '\t', helados[contador][1], "         ",
-              '\t', helados[contador][2])
-        contador += 1
+    #ventasDia  += 1
+    mostrarTablas(helados)
     eleccion = input()
 
 
 def mostrarInventario(h, c):
-    print("INVENTARIO")
-
+    print("INVENTARIO\n\nHelados")
+    mostrarTablas(helados)
+    print("\nCoberturas")
+    mostrarTablas(coberturas)
 
 # listaHelados
-# Nombre, precio, cantidad
-helados = [["Vainilla", 2000, 12], ["Chocolate", 1500, 50]]
+helados = [["Vainilla", 2000, 12],
+           ["Chocolate", 1500, 50]]
 # listaCoverturas
-# Nombre, precio, cantidad
-coberturas = [["M&Ms", 1500, 30], ["Galletas", 2500, 40]]
+coberturas = [["M&Ms", 1500, 30],
+              ["Galletas", 2500, 40]]
 
+ventasDia = 0
 mostrarMenu()
 elegirMenuPrincipal(ingresarDatos())
