@@ -1,11 +1,17 @@
 import sys
 from tabulate import tabulate
-
+def ingresarEnteros():
+    while True:
+        entrada = input()
+        try:
+            entrada = int(entrada)
+            return entrada
+        except ValueError:
+            print("Entrada Invalida. Por favor intente de nuevo")
 def mostrarMenu():
     titulo = "Administracion de heladeria"
     print(titulo.center(50, "*"), "\n")
-    print(
-        "Seleccione una opción (1-5) o q para salir\n1.Comprar\n2.Agregar un producto\n3.Ver inventario\n4.Agregrar al inventario\n5.Total de ventas del dia\nq: Salir")
+    print("Seleccione una opción (1-5) o q para salir\n1.Comprar\n2.Agregar un producto\n3.Ver inventario\n4.Agregrar al inventario\n5.Total de ventas del dia\nq: Salir")
 def mostrarTablas(t):
     print(tabulate(t,headers=("N°.","Nombre", "Precio", "Cantidad")))#, tablefmt="fancy_grid"))
 def ingresarDatos():
@@ -54,9 +60,9 @@ def agregarNuevoProducto():
     print("Ingrese el nombre del producto(Ejemplos: Galletas, M&Ms, etc.): ")
     nuevoProducto.append(input())
     print("Ingrese el valor de la porción: ")
-    nuevoProducto.append(int(input()))
+    nuevoProducto.append(ingresarEnteros())
     print("Ingrese el numero de porciones disponibles")
-    nuevoProducto.append(int(input()))
+    nuevoProducto.append(ingresarEnteros())
     if seleccion == "1":
         nuevoProducto.insert(0,len(helados)+1)
         helados.append(nuevoProducto)
@@ -64,7 +70,6 @@ def agregarNuevoProducto():
         nuevoProducto.insert(0, len(coberturas)+1)
         coberturas.append(nuevoProducto)
 def mostrarInventario():
-    contador = 0
     print("INVENTARIO\n\nHelados")
     mostrarTablas(helados)
     print("\nCoberturas")
@@ -89,7 +94,8 @@ def agregarInventario():
             print("Entrada invalida. Por favor intente de nuevo")
         print("Usted selecciono: ")
         print(helados[entrada-1][0],"       ",helados[entrada-1][1], "         ",helados[entrada-1][2], "       ", helados[entrada-1][3])
-        nuevasPorciones = int(input("Ingrese la cantidad de porciones a registrar:\n"))
+        print("Ingrese la cantidad de personas a registrar: \n")
+        nuevasPorciones = ingresarEnteros()
         helados[entrada-1][3] += nuevasPorciones
     if seleccion == "2":
         mostrarTablas(coberturas)
@@ -100,7 +106,8 @@ def agregarInventario():
             print("Entrada invalida. Por favor intente de nuevo")
         print("Usted selecciono: ")
         print(coberturas[entrada-1][0],"       ",coberturas[entrada-1][1], "         ",coberturas[entrada-1][2], "       ", coberturas[entrada-1][2])
-        nuevasPorciones = int(input("Ingrese la cantidad de porciones a registrar:\n"))
+        print("Ingrese la cantidad de porciones a registrar:\n")
+        nuevasPorciones = ingresarEnteros()
         coberturas[entrada-1][3] += nuevasPorciones
 def ventasDia(a):
     print("Total ventas del día: {}".format(a),"\n")
