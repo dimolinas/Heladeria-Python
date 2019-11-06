@@ -39,7 +39,7 @@ def venta():
     while True:
         seleccion = int(input())
         if seleccion in range(1,len(helados)+1):
-            print("Hasta aca funciona")
+
             break
         print("Entrada invalida. Por favor intente de nuevo")
 def agregarNuevoProducto():
