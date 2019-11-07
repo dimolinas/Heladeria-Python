@@ -1,4 +1,3 @@
-import sys
 from tabulate import tabulate
 def ingresarEnteros():
     while True:
@@ -37,16 +36,37 @@ def elegirMenuPrincipal(p):
     if p == 5:
         ventasDia(totalVentas)
     if p == "q":
-        sys.exit()
+        return True
 def venta():
+    global totalVentas
     print("Nueva venta\nEscoja un sabor:")
     mostrarTablas(helados)
     while True:
         seleccion = int(input())
         if seleccion in range(1,len(helados)+1):
-
             break
         print("Entrada invalida. Por favor intente de nuevo")
+    print("Usted seleccionó:")
+    print(helados[seleccion - 1][0], "       ", helados[seleccion - 1][1], "         ", helados[seleccion - 1][2], "       ", helados[seleccion - 1][3])
+    print("\n ¿Cuantas porciones?:")
+    while True:
+        porciones = ingresarEnteros()
+        if porciones > helados[seleccion-1][3]:
+            print("No hay esa cantidad de porciones, ingresa menos por favor ")
+        else:
+            break
+    print("\n¿Desea cobertura?(s/n):")
+    while True:
+        seleccionCobertura = input()
+        if seleccionCobertura == "s" or seleccionCobertura == "n":
+            break
+        print("Entrada Invalidad. Intenta de nuevo")
+    if seleccionCobertura == "n":
+        totalApagar = porciones * helados[seleccion-1][2]
+        totalVentas += totalApagar
+    if seleccionCobertura == "s":
+        print("Escoja  la cobertura")
+        mostrarTablas(coberturas)
 def agregarNuevoProducto():
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
     while True:
@@ -120,6 +140,7 @@ totalVentas = 0
 
 while True:
     mostrarMenu()
-    elegirMenuPrincipal(ingresarDatos())
+    if elegirMenuPrincipal(ingresarDatos()) :
+        break
 
 
