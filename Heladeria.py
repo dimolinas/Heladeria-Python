@@ -15,8 +15,9 @@ def mostrarMenu():
     print("Seleccione una opción (1-5) o q para salir\n1.Comprar\n2.Agregar un producto\n3.Ver inventario\n4.Agregrar al inventario\n5.Total de ventas del dia\nq: Salir")
 def mostrarTablas(t):
     for i in range(0,len(t)):
+        print(i+1,end="")
         for j in range(0,len(t[i])):
-            print(i+1,"     ",t[i][j],end="")
+            print("     ",t[i][j],end="")
         print()
 def ingresarDatos():
     while True:
