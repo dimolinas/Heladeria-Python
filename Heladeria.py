@@ -116,7 +116,6 @@ def agregarNuevoProducto():
 
         if seleccion == "2":
             coberturas.append(nuevoProducto)
-
 def mostrarInventario():
     print("INVENTARIO\n\nHelados")
     mostrarTablas(helados)
@@ -135,28 +134,34 @@ def agregarInventario():
     if seleccion == "1":
         mostrarTablas(helados)
         print("\nSeleccione un producto: ")
+
         while True:
             entrada = int(input())
             if entrada in range(1,len(helados)+1):
                 break
             print("Entrada invalida. Por favor intente de nuevo")
+
         print("Usted selecciono: ")
-        print(helados[entrada-1][0],"       ",helados[entrada-1][1], "         ",helados[entrada-1][2], "       ", helados[entrada-1][3])
-        print("Ingrese la cantidad de personas a registrar: \n")
+        print(entrada,"       ",helados[entrada-1][0],"       ",helados[entrada-1][1], "         ",helados[entrada-1][2])
+        print("\nIngrese la cantidad de personas a registrar:")
         nuevasPorciones = ingresarEnteros()
-        helados[entrada-1][3] += nuevasPorciones
+        helados[entrada-1][2] += nuevasPorciones
+
     if seleccion == "2":
         mostrarTablas(coberturas)
+        print("\nSeleccione un producto: ")
+
         while True:
             entrada = int(input())
             if entrada in range(1,len(helados)+1):
                 break
             print("Entrada invalida. Por favor intente de nuevo")
+
         print("Usted selecciono: ")
-        print(coberturas[entrada-1][0],"       ",coberturas[entrada-1][1], "         ",coberturas[entrada-1][2], "       ", coberturas[entrada-1][2])
-        print("Ingrese la cantidad de porciones a registrar:\n")
+        print(entrada,"       ",coberturas[entrada-1][0], "         ",coberturas[entrada-1][1], "       ", coberturas[entrada-1][2])
+        print("\nIngrese la cantidad de porciones a registrar:")
         nuevasPorciones = ingresarEnteros()
-        coberturas[entrada-1][3] += nuevasPorciones
+        coberturas[entrada-1][2] += nuevasPorciones
 def ventasDia(a):
     print("Total ventas del día: {}".format(a),"\n")
 
