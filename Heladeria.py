@@ -3,7 +3,10 @@ def ingresarEnteros():
         entrada = input()
         try:
             entrada = int(entrada)
-            return entrada
+            if entrada > 0:
+                return entrada
+            else:
+                print("Entrada Invalida.Por favor intente de nuevo")
         except ValueError:
             print("Entrada Invalida. Por favor intente de nuevo")
 def mostrarMenu():
@@ -86,10 +89,8 @@ def agregarNuevoProducto():
     print("Ingrese el numero de porciones disponibles")
     nuevoProducto.append(ingresarEnteros())
     if seleccion == "1":
-        nuevoProducto.insert(0,len(helados)+1)
         helados.append(nuevoProducto)
     if seleccion == "2":
-        nuevoProducto.insert(0, len(coberturas)+1)
         coberturas.append(nuevoProducto)
 def mostrarInventario():
     print("INVENTARIO\n\nHelados")
