@@ -44,35 +44,54 @@ def elegirMenuPrincipal(p):
     if p == "q":
         return True
 def venta():
+
     global totalVentas
     print("Nueva venta\nEscoja un sabor:")
     mostrarTablas(helados)
+
     while True:
-        seleccion = int(input())
+        seleccion = ingresarEnteros()
         if seleccion in range(1,len(helados)+1):
             break
-        print("Entrada invalida. Por favor intente de nuevo")
+        print("Entrada fuera de rango. Intenta de nuevo")
+
     print("Usted seleccionó:")
-    print(helados[seleccion - 1][0], "       ", helados[seleccion - 1][1], "         ", helados[seleccion - 1][2], "       ", helados[seleccion - 1][3])
+    print(seleccion, "       ", helados[seleccion - 1][0], "         ", helados[seleccion - 1][1], "       ", helados[seleccion - 1][2])
     print("\n ¿Cuantas porciones?:")
+
     while True:
         porciones = ingresarEnteros()
-        if porciones > helados[seleccion-1][3]:
+        if porciones > helados[seleccion-1][2]:
             print("No hay esa cantidad de porciones, ingresa menos por favor ")
         else:
             break
+    helados[seleccion-1][2] -= porciones
+    totalApagar = porciones * helados[seleccion-1][1]
     print("\n¿Desea cobertura?(s/n):")
+
     while True:
         seleccionCobertura = input()
         if seleccionCobertura == "s" or seleccionCobertura == "n":
             break
         print("Entrada Invalidad. Intenta de nuevo")
-    if seleccionCobertura == "n":
-        totalApagar = porciones * helados[seleccion-1][2]
-        totalVentas += totalApagar
+
     if seleccionCobertura == "s":
         print("Escoja  la cobertura")
         mostrarTablas(coberturas)
+
+        while True:
+            eleccionCobertura = ingresarEnteros()
+            if eleccionCobertura in range(1,len(coberturas)+1):
+                break
+            print("Entrada fuera de rango. Intenta de nuevo")
+
+        print("Usted selecciono:")
+        print(eleccionCobertura, "       ", coberturas[eleccionCobertura - 1][0], "         ", coberturas[eleccionCobertura - 1][1], "       ", coberturas[eleccionCobertura - 1][2])
+        coberturas[seleccion-1][2] -= 1
+        totalApagar += coberturas[eleccionCobertura-1][1]
+
+    print("\nEL total a pagar es:                   ",totalApagar)
+    totalVentas += totalApagar
 def agregarNuevoProducto():
 
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
