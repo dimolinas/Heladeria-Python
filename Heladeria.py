@@ -74,7 +74,9 @@ def venta():
         print("Escoja  la cobertura")
         mostrarTablas(coberturas)
 def agregarNuevoProducto():
+
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
+
     while True:
         seleccion = input()
         if seleccion == "1" or seleccion== "2":
@@ -82,17 +84,39 @@ def agregarNuevoProducto():
         if seleccion == "q":
             break
         print("Entrada invalida. Por favor intente de nuevo")
+
     nuevoProducto = []
-    print("Ingrese el nombre del producto(Ejemplos: Galletas, M&Ms, etc.): ")
-    nuevoProducto.append(input())
-    print("Ingrese el valor de la porción: ")
-    nuevoProducto.append(ingresarEnteros())
-    print("Ingrese el numero de porciones disponibles")
-    nuevoProducto.append(ingresarEnteros())
+    ingreso = True
+    nombre = input("Ingrese el nombre del producto(Ejemplos: Galletas, M&Ms, etc.): \n")
+
     if seleccion == "1":
-        helados.append(nuevoProducto)
+
+        for i in range(0, len(helados)):
+            if nombre == helados[i][0]:
+                print("Este sabor de helado  ya esta registrado\n")
+                ingreso = False
+
     if seleccion == "2":
-        coberturas.append(nuevoProducto)
+
+        for i in range(0,len(coberturas)):
+            if nombre == coberturas[i][0]:
+                print("Este sabor de cobertura ya esta registrado\n")
+                ingreso = False
+
+    if ingreso == True:
+        nuevoProducto.append(nombre)
+        print("Ingrese el valor de la porción: ")
+        nuevoProducto.append(ingresarEnteros())
+
+        print("Ingrese el numero de porciones disponibles")
+        nuevoProducto.append(ingresarEnteros())
+
+        if seleccion == "1":
+            helados.append(nuevoProducto)
+
+        if seleccion == "2":
+            coberturas.append(nuevoProducto)
+
 def mostrarInventario():
     print("INVENTARIO\n\nHelados")
     mostrarTablas(helados)
