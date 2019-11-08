@@ -1,4 +1,3 @@
-from tabulate import tabulate
 def ingresarEnteros():
     while True:
         entrada = input()
@@ -12,7 +11,10 @@ def mostrarMenu():
     print(titulo.center(50, "*"), "\n")
     print("Seleccione una opción (1-5) o q para salir\n1.Comprar\n2.Agregar un producto\n3.Ver inventario\n4.Agregrar al inventario\n5.Total de ventas del dia\nq: Salir")
 def mostrarTablas(t):
-    print(tabulate(t,headers=("N°.","Nombre", "Precio", "Cantidad")))#, tablefmt="fancy_grid"))
+    for i in range(0,len(t)):
+        for j in range(0,len(t[i])):
+            print(i+1,"     ",t[i][j],end="")
+        print()
 def ingresarDatos():
     while True:
         eleccion = input()
@@ -132,10 +134,10 @@ def agregarInventario():
 def ventasDia(a):
     print("Total ventas del día: {}".format(a),"\n")
 
-helados = [[1,"Vainilla", 2000, 12],
-           [2,"Chocolate", 1500, 50]]
-coberturas = [[1,"M&Ms", 1500, 30],
-              [2,"Galletas", 2500, 40]]
+helados = [["Vainilla", 2000, 12],
+           ["Chocolate", 1500, 50]]
+coberturas = [["M&Ms", 1500, 30],
+              ["Galletas", 2500, 40]]
 totalVentas = 0
 
 while True:
