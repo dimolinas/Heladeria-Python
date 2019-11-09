@@ -29,6 +29,13 @@ def mostrarTablas(t):
             print(j, end=(s - len(str(j))) * " ")
         a += 1
         print()
+def mostrarSeleccion(t,y):
+    s = 20
+    l = t[y - 1]
+    print(y, end=")")
+    for i in l:
+        print(i, end=(s - len(str(i))) * " ")
+    print()
 def ingresarDatos():
     while True:
         eleccion = input()
@@ -66,7 +73,7 @@ def venta():
         print("Entrada fuera de rango. Intenta de nuevo")
 
     print("Usted seleccionó:")
-    print(seleccion, "       ", helados[seleccion - 1][0], "         ", helados[seleccion - 1][1], "       ", helados[seleccion - 1][2])
+    mostrarSeleccion(helados,seleccion)
     print("\n ¿Cuantas porciones?:")
 
     while True:
@@ -96,7 +103,7 @@ def venta():
             print("Entrada fuera de rango. Intenta de nuevo")
 
         print("Usted selecciono:")
-        print(eleccionCobertura, "       ", coberturas[eleccionCobertura - 1][0], "         ", coberturas[eleccionCobertura - 1][1], "       ", coberturas[eleccionCobertura - 1][2])
+        mostrarSeleccion(coberturas,eleccionCobertura)
         coberturas[seleccion-1][2] -= 1
         totalApagar += coberturas[eleccionCobertura-1][1]
 
@@ -105,7 +112,6 @@ def venta():
 
     verificar(helados)
     verificar(coberturas)
-
 def agregarNuevoProducto():
 
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
