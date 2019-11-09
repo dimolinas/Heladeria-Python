@@ -199,7 +199,7 @@ def agregarInventario():
             print("Entrada invalida. Por favor intente de nuevo")
 
         print("Usted selecciono: ")
-        print(entrada,"       ",helados[entrada-1][0],"       ",helados[entrada-1][1], "         ",helados[entrada-1][2])
+        mostrarSeleccion(helados,entrada)
         print("\nIngrese la cantidad de personas a registrar:")
         nuevasPorciones = ingresarEnteros()
         helados[entrada-1][2] += nuevasPorciones
@@ -215,7 +215,7 @@ def agregarInventario():
             print("Entrada invalida. Por favor intente de nuevo")
 
         print("Usted selecciono: ")
-        print(entrada,"       ",coberturas[entrada-1][0], "         ",coberturas[entrada-1][1], "       ", coberturas[entrada-1][2])
+        mostrarSeleccion(coberturas,entrada)
         print("\nIngrese la cantidad de porciones a registrar:")
         nuevasPorciones = ingresarEnteros()
         coberturas[entrada-1][2] += nuevasPorciones
