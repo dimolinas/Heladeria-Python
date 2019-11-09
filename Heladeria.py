@@ -104,20 +104,22 @@ def venta():
         print("Entrada Invalidad. Intenta de nuevo")
 
     if seleccionCobertura == "s":
-        print("Escoja  la cobertura")
-        mostrarTablas(coberturas)
+        if len(coberturas)> 0:
+            print("Escoja  la cobertura")
+            mostrarTablas(coberturas)
 
-        while True:
-            eleccionCobertura = ingresarEnteros()
-            if eleccionCobertura in range(1,len(coberturas)+1):
-                break
-            print("Entrada fuera de rango. Intenta de nuevo")
+            while True:
+                eleccionCobertura = ingresarEnteros()
+                if eleccionCobertura in range(1,len(coberturas)+1):
+                    break
+                print("Entrada fuera de rango. Intenta de nuevo")
 
-        print("Usted selecciono:")
-        mostrarSeleccion(coberturas,eleccionCobertura)
-        coberturas[seleccion-1][2] -= 1
-        totalApagar += coberturas[eleccionCobertura-1][1]
-
+            print("Usted selecciono:")
+            mostrarSeleccion(coberturas,eleccionCobertura)
+            coberturas[eleccionCobertura-1][2] -= 1
+            totalApagar += coberturas[eleccionCobertura-1][1]
+        else:
+            print("No hay productos de coverturas")
     print("\nEL total a pagar es:                   ",totalApagar)
     totalVentas += totalApagar
 
@@ -134,7 +136,7 @@ def agregarNuevoProducto():
             break
         if seleccion == "q":
             return False
-    print("Entrada invalida. Por favor intente de nuevo")
+        print("Entrada invalida. Por favor intente de nuevo")
 
     nuevoProducto = []
     ingreso = True
@@ -177,6 +179,7 @@ def mostrarInventario():
 #Agrega nuevas contidades a los productos ya registrados
 def agregarInventario():
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
+
     while True:
         seleccion = input()
         if seleccion == "1" or   seleccion== "2":
@@ -184,6 +187,7 @@ def agregarInventario():
         if seleccion == "q":
             break
         print("Entrada invalida. Por favor intente de nuevo")
+
     if seleccion == "1":
         mostrarTablas(helados)
         print("\nSeleccione un producto: ")
