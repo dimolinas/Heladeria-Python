@@ -1,3 +1,4 @@
+#Funcion para la entrada de enteros a la derecha de cero
 def ingresarEnteros():
     while True:
         entrada = input()
@@ -9,6 +10,7 @@ def ingresarEnteros():
                 print("Entrada Invalida.Por favor intente de nuevo")
         except ValueError:
             print("Entrada Invalida. Por favor intente de nuevo")
+#Funcion para eliminar cuando se acaban las porciones de un producto
 def verificar(t):
     contador = 0
     while contador < len(t):
@@ -16,10 +18,12 @@ def verificar(t):
             del t[contador]
             break
         contador += 1
+#Funcion que imprime el menu y sus opciones
 def mostrarMenu():
     titulo = "Administracion de heladeria"
     print(titulo.center(50, "*"), "\n")
     print("Seleccione una opción (1-5) o q para salir\n1.Comprar\n2.Agregar un producto\n3.Ver inventario\n4.Agregrar al inventario\n5.Total de ventas del dia\nq: Salir")
+#Funcion para imprimir elementos de una lista anidada como parametro
 def mostrarTablas(t):
     s = 20
     a = 1
@@ -29,6 +33,7 @@ def mostrarTablas(t):
             print(j, end=(s - len(str(j))) * " ")
         a += 1
         print()
+#Función para imprimir la eleccion de sabor al usuario
 def mostrarSeleccion(t,y):
     s = 20
     l = t[y - 1]
@@ -36,6 +41,7 @@ def mostrarSeleccion(t,y):
     for i in l:
         print(i, end=(s - len(str(i))) * " ")
     print()
+#Funcion de ingreso para el menu principal
 def ingresarDatos():
     while True:
         eleccion = input()
@@ -47,6 +53,7 @@ def ingresarDatos():
             break
         else:
             print("Entrada invalida. Por favor intente de nuevo")
+#Función en la que se escoge, de acuerdo con la entrada
 def elegirMenuPrincipal(p):
     if p == 1:
         if len(helados) > 0:
