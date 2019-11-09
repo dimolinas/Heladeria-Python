@@ -9,6 +9,13 @@ def ingresarEnteros():
                 print("Entrada Invalida.Por favor intente de nuevo")
         except ValueError:
             print("Entrada Invalida. Por favor intente de nuevo")
+def verificar(t):
+    contador = 0
+    while contador < len(t):
+        if t[contador][2] == 0:
+            del t[contador]
+            break
+        contador += 1
 def mostrarMenu():
     titulo = "Administracion de heladeria"
     print(titulo.center(50, "*"), "\n")
@@ -95,6 +102,10 @@ def venta():
 
     print("\nEL total a pagar es:                   ",totalApagar)
     totalVentas += totalApagar
+
+    verificar(helados)
+    verificar(coberturas)
+
 def agregarNuevoProducto():
 
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
