@@ -124,8 +124,8 @@ def agregarNuevoProducto():
         if seleccion == "1" or seleccion== "2":
             break
         if seleccion == "q":
-            break
-        print("Entrada invalida. Por favor intente de nuevo")
+            return False
+    print("Entrada invalida. Por favor intente de nuevo")
 
     nuevoProducto = []
     ingreso = True
