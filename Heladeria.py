@@ -49,7 +49,10 @@ def ingresarDatos():
             print("Entrada invalida. Por favor intente de nuevo")
 def elegirMenuPrincipal(p):
     if p == 1:
-        venta()
+        if len(helados) > 0:
+            venta()
+        else:
+            print("No hay helados disponibles")
     if p == 2:
         agregarNuevoProducto()
     if p == 3:
