@@ -53,7 +53,7 @@ def ingresarDatos():
             break
         else:
             print("Entrada invalida. Por favor intente de nuevo")
-#Función en la que se escoge, de acuerdo con la entrada
+#Función en la que se escoge, de acuerdo con la entrada del usuario
 def elegirMenuPrincipal(p):
     if p == 1:
         if len(helados) > 0:
@@ -70,6 +70,7 @@ def elegirMenuPrincipal(p):
         ventasDia(totalVentas)
     if p == "q":
         return True
+#funcion para la compras de helados
 def venta():
 
     global totalVentas
@@ -122,6 +123,7 @@ def venta():
 
     verificar(helados)
     verificar(coberturas)
+#Función si el usuario desea ingresar un nuevo producto
 def agregarNuevoProducto():
 
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
@@ -165,12 +167,14 @@ def agregarNuevoProducto():
 
         if seleccion == "2":
             coberturas.append(nuevoProducto)
+#Muestra los productos
 def mostrarInventario():
     print("INVENTARIO\n\nHelados")
     mostrarTablas(helados)
     print("\nCoberturas")
     mostrarTablas(coberturas)
     print()
+#Agrega nuevas contidades a los productos ya registrados
 def agregarInventario():
     print("Tipo de producto (1 o 2)\n1. Helado\n2. Cobertura\nq. Salir")
     while True:
@@ -211,18 +215,21 @@ def agregarInventario():
         print("\nIngrese la cantidad de porciones a registrar:")
         nuevasPorciones = ingresarEnteros()
         coberturas[entrada-1][2] += nuevasPorciones
+#Imprime la variable ventas del dia
 def ventasDia(a):
     print("Total ventas del día: {}".format(a),"\n")
 
+#Listas
+#Nombre,Precio,Cantidad
 helados = [["Vainilla", 2000, 12],
            ["Chocolate", 1500, 50]]
 coberturas = [["M&Ms", 1500, 30],
               ["Galletas", 2500, 40]]
+#Total Ventas del dia
 totalVentas = 0
 
+#Ciclo Principal del programa
 while True:
     mostrarMenu()
     if elegirMenuPrincipal(ingresarDatos()) :
         break
-
-
